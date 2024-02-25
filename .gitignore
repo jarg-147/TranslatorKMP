@@ -31,3 +31,5 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+shared/src/commonMain/kotlin/core/common/utils/NetworkConstants.kt
