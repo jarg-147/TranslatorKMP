@@ -32,6 +32,7 @@ kotlin {
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.serialization.kotlinx.json)
 
+
             implementation(libs.sqldelight.runtime)
             implementation(libs.sqldelight.coroutines.extensions)
 
@@ -45,8 +46,9 @@ kotlin {
         }
 
         androidMain.dependencies {
+            implementation(libs.ktor.client.android)
             implementation(libs.ktor.client.okhttp)
-
+            
             implementation(libs.sqldelight.android.driver)
         }
 
