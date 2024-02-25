@@ -5,6 +5,9 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.hiltPlugin)
+    kotlin("kapt")
+    kotlin("plugin.serialization") version (libs.versions.kotlin.get())
 }
 
 kotlin {
@@ -15,18 +18,30 @@ kotlin {
             }
         }
     }
-    
+
     sourceSets {
-        
         androidMain.dependencies {
-            implementation(libs.compose.ui.tooling.preview)
+            implementation(libs.androidx.core.ktx)
+            implementation(libs.kotlinx.coroutines.android)
+            implementation(libs.material3)
+
+            implementation(project.dependencies.platform(libs.compose.bom))
             implementation(libs.androidx.activity.compose)
-        }
-        commonMain.dependencies {
+            implementation(libs.compose.ui.tooling)
+            implementation(libs.compose.ui.tooling.preview)
+            implementation(libs.compose.navigation)
+            implementation(libs.compose.icons)
+            implementation(compose.ui)
             implementation(compose.runtime)
             implementation(compose.foundation)
-            implementation(compose.material)
-            implementation(compose.ui)
+
+            implementation(libs.coil.compose)
+            implementation(libs.ktor.client.android)
+
+            implementation(libs.hilt.android)
+            configurations["kapt"].dependencies.add(libs.hilt.compiler.get())
+            implementation(libs.hilt.navigation.compose)
+
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
             implementation(projects.shared)
@@ -49,22 +64,33 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     dependencies {
         debugImplementation(libs.compose.ui.tooling)
+        androidTestImplementation(libs.compose.test.runner)
+        androidTestImplementation(libs.junit)
+        androidTestImplementation(libs.compose.testing)
+        androidTestImplementation(libs.androidx.test.rules)
+        debugImplementation(libs.compose.testing.manifest)
+
+        androidTestImplementation(libs.hilt.testing)
     }
 }
 
