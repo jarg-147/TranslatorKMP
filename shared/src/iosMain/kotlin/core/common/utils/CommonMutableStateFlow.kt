@@ -1,4 +1,4 @@
-package core.domain.utils
+package core.common.utils
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*

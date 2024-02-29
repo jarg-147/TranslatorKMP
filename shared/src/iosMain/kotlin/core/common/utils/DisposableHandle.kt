@@ -1,3 +1,3 @@
-package core.domain.utils
+package core.common.utils
 
 fun interface DisposableHandle: kotlinx.coroutines.DisposableHandle
