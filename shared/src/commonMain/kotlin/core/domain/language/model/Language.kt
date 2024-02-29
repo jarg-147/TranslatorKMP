@@ -1,4 +1,4 @@
-package core.domain.model.language;
+package core.domain.language.model;
 
 enum class Language(
     val langCode: String,

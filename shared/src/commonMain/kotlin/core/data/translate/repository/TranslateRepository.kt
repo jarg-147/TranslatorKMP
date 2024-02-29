@@ -1,26 +1,29 @@
-package core.network.translate
+package core.data.translate.repository
 
+import core.common.utils.*
 import core.data.translate.model.TranslateRequest
 import core.data.translate.model.TranslatedDto
-import core.domain.model.language.Language
-import core.domain.model.translate.*
-import core.network.utils.NetworkConstants
+import core.domain.language.model.Language
+import core.domain.translate.model.TranslateError
+import core.domain.translate.model.TranslateException
+import core.domain.translate.repository.TranslateDataSource
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.*
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import io.ktor.utils.io.errors.IOException
+import kotlinx.coroutines.flow.flowOf
 
-class KtorTranslateClient(
+class TranslateRepository(
     private val httpClient: HttpClient
-): TranslateClient {
+): TranslateDataSource {
 
     override suspend fun translate(
         fromLanguage: Language,
         fromText: String,
         toLanguage: Language
-    ): String {
+    ): CommonFlow<String> {
         val result = try {
             httpClient.post {
                 url(NetworkConstants.BASE_URL + "/translate")
@@ -45,7 +48,7 @@ class KtorTranslateClient(
         }
 
         return try {
-            result.body<TranslatedDto>().translatedText
+            flowOf(result.body<TranslatedDto>().translatedText).toCommonFlow()
         } catch(e: Exception) {
             throw TranslateException(TranslateError.SERVER_ERROR)
         }
