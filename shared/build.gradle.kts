@@ -67,3 +67,11 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
 }
+
+sqldelight {
+    databases {
+        create("TranslatorDatabase") {
+            packageName.set("com.jarg.translator.database")
+        }
+    }
+}
