@@ -16,7 +16,7 @@ This project is part of the course offered by Philip Lackner. You can find more 
 ### Setup Instructions
 1. Clone this repository on your local machine:
     ```bash
-    git clone https://github.com/yourusername/reponame.git
+    git clone https://github.com/jarg-147/TranslatorKMP.git
     ```
 
 2. Open the project in Android Studio to work on the Android platform.
