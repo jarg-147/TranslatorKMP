@@ -10,7 +10,7 @@ This project is part of the course offered by Philip Lackner. You can find more 
 ## Project Setup
 ### Prerequisites
 - Make sure you have [Android Studio](https://developer.android.com/studio) installed for Android development.
-- Make sure you have [Kotlin Multiplatform plugin]([https://developer.android.com/studio](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile) installed.
+- Make sure you have [Kotlin Multiplatform plugin](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile) installed.
 - For iOS development, you'll need a Swift development environment and Xcode installed on your system.
 
 ### Setup Instructions
