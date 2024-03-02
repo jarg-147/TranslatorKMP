@@ -1,4 +1,4 @@
-package core.network.client
+package core.data.remote
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.Android

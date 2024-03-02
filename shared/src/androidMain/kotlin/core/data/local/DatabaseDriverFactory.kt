@@ -1,4 +1,4 @@
-package core.data.db
+package core.data.local
 
 import android.content.Context
 import app.cash.sqldelight.db.SqlDriver
