@@ -1,13 +1,13 @@
 package core.domain.translate.useCase
 
-import core.data.translate.repository.TranslateRepository
 import core.domain.history.model.HistoryItem
 import core.domain.history.repository.HistoryDataSource
 import core.domain.language.model.Language
+import core.domain.translate.repository.TranslateDataSource
 import kotlinx.coroutines.flow.*
 
 class TranslateUseCase(
-    private val client: TranslateRepository,
+    private val client: TranslateDataSource,
     private val historyDataSource: HistoryDataSource
 ) {
 
