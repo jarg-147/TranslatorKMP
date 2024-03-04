@@ -1,5 +1,4 @@
 import org.jetbrains.compose.ExperimentalComposeLibrary
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -16,35 +15,6 @@ kotlin {
             kotlinOptions {
                 jvmTarget = "1.8"
             }
-        }
-    }
-
-    sourceSets {
-        androidMain.dependencies {
-            implementation(libs.androidx.core.ktx)
-            implementation(libs.kotlinx.coroutines.android)
-            implementation(libs.material3)
-
-            implementation(project.dependencies.platform(libs.compose.bom))
-            implementation(libs.androidx.activity.compose)
-            implementation(libs.compose.ui.tooling)
-            implementation(libs.compose.ui.tooling.preview)
-            implementation(libs.compose.navigation)
-            implementation(libs.compose.icons)
-            implementation(compose.ui)
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-
-            implementation(libs.coil.compose)
-            implementation(libs.ktor.client.android)
-
-            implementation(libs.hilt.android)
-            configurations["kapt"].dependencies.add(libs.hilt.compiler.get())
-            implementation(libs.hilt.navigation.compose)
-
-            @OptIn(ExperimentalComposeLibrary::class)
-            implementation(compose.components.resources)
-            implementation(projects.shared)
         }
     }
 }
@@ -83,6 +53,33 @@ android {
     }
 
     dependencies {
+        implementation(libs.androidx.core.ktx)
+        implementation(libs.kotlinx.coroutines.android)
+        implementation(libs.material3)
+
+        implementation(project.dependencies.platform(libs.compose.bom))
+        implementation(libs.androidx.activity.compose)
+        implementation(libs.androidx.lifecycle.runtime)
+        implementation(libs.androidx.lifecycle.runtime.compose)
+        implementation(libs.compose.ui.tooling)
+        implementation(libs.compose.ui.tooling.preview)
+        implementation(libs.compose.navigation)
+        implementation(libs.compose.icons)
+        implementation(compose.ui)
+        implementation(compose.runtime)
+        implementation(compose.foundation)
+
+        implementation(libs.coil.compose)
+        implementation(libs.ktor.client.android)
+
+        implementation(libs.hilt.android)
+        configurations["kapt"].dependencies.add(libs.hilt.compiler.get())
+        implementation(libs.hilt.navigation.compose)
+
+        @OptIn(ExperimentalComposeLibrary::class)
+        implementation(compose.components.resources)
+        implementation(projects.shared)
+
         debugImplementation(libs.compose.ui.tooling)
         androidTestImplementation(libs.compose.test.runner)
         androidTestImplementation(libs.junit)
